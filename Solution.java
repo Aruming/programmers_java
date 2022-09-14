@@ -1,12 +1,14 @@
-class Solution {
-    public String solution(int num) {
-        String answer = "";
+import java.util.*;
 
-        if(num%2==0){
-            answer = "Even";
-        }else{
-            answer = "Odd";
+public class Solution {
+    public int solution(int n) {
+        int answer = 0;
+
+        while(n != 0){
+            answer += n%10;
+            n = n/10;
         }
+
 
         return answer;
     }
