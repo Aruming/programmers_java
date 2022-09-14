@@ -1,12 +1,13 @@
 class Solution {
-    public int solution(int n) {
-        int answer = 0;
-        for(int x=1;x<n;x++){
-            if(n%x==1){
-                answer=x;
-                break;
-            }
+    public String solution(int num) {
+        String answer = "";
+
+        if(num%2==0){
+            answer = "Even";
+        }else{
+            answer = "Odd";
         }
+
         return answer;
     }
 }
