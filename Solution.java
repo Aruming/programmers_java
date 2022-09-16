@@ -1,10 +1,17 @@
+import java.lang.Math;
+
 class Solution {
-    public double solution(int[] arr) {
-        double answer = 0;
-        for(int i=0;i<arr.length;i++){
-            answer+=arr[i];
+    public long solution(long n) {
+        long answer = 0;
+
+        double x = Math.sqrt(n);
+        if(x%1==0){
+            answer = (long)Math.pow(x+1, 2);
         }
-        answer = answer/arr.length;
+        else{
+            answer = -1;
+        }
+
         return answer;
     }
 }
