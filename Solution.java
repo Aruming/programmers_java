@@ -1,15 +1,20 @@
-import java.lang.Math;
-
 class Solution {
-    public long solution(long n) {
-        long answer = 0;
+    public int[] solution(long n) {
+        int i=0;
+        long num = n;
 
-        double x = Math.sqrt(n);
-        if(x%1==0){
-            answer = (long)Math.pow(x+1, 2);
+        while(num!=0){
+            i++;
+            num/=10;
         }
-        else{
-            answer = -1;
+
+        int[] answer = new int[i];
+
+        i=0;
+        while(n!=0){
+            answer[i] = (int)(n%10);
+            n /= 10;
+            i++;
         }
 
         return answer;
