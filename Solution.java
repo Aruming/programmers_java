@@ -1,20 +1,25 @@
 class Solution {
-    public int[] solution(long n) {
-        int i=0;
-        long num = n;
+    boolean solution(String s) {
+        boolean answer = true;
+        int pnum = 0;
+        int ynum = 0;
 
-        while(num!=0){
-            i++;
-            num/=10;
+        s = s.toLowerCase();
+
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='p'){
+                pnum++;
+            }
+            if(s.charAt(i)=='y'){
+                ynum++;
+            }
         }
 
-        int[] answer = new int[i];
-
-        i=0;
-        while(n!=0){
-            answer[i] = (int)(n%10);
-            n /= 10;
-            i++;
+        if(pnum==ynum){
+            answer = true;
+        }
+        else{
+            answer = false;
         }
 
         return answer;
