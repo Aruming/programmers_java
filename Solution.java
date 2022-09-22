@@ -1,16 +1,11 @@
 class Solution {
-    public boolean solution(int x) {
-        boolean answer = true;
-        int num = 0;
-        int tmp = x;
+    public long[] solution(int x, int n) {
+        long[] answer = new long[n];
+        long num = x;
 
-        while(tmp!=0){
-            num += tmp%10;
-            tmp /= 10;
-        }
-
-        if(x%num != 0){
-            answer = false;
+        for(int i=0;i<n;i++){
+            answer[i] = num;
+            num += x;
         }
 
         return answer;
