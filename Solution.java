@@ -1,20 +1,20 @@
+import java.util.Arrays;
+
 class Solution {
-    public long solution(int a, int b) {
+    public long solution(long n) {
         long answer = 0;
 
-        if(a==b){
-            answer = a;
+        String num = Long.toString(n);
+        char[] arr = num.toCharArray();
+
+        Arrays.sort(arr);
+
+        num = "";
+        for(int i=arr.length;i>0;i--){
+            num+=arr[i-1];
         }
-        else if(a>b){
-            for(int i=b;i<=a;i++){
-                answer += i;
-            }
-        }
-        else{
-            for(int i=a;i<=b;i++){
-                answer += i;
-            }
-        }
+
+        answer = Long.parseLong(num);
 
         return answer;
     }
