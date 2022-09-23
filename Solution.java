@@ -1,29 +1,19 @@
 class Solution {
-    public int solution(int num) {
-        int answer = 0;
-        int cnt = 0;
-        long n = num;
+    public long solution(int a, int b) {
+        long answer = 0;
 
-        if(n==1){
-            answer = 0;
+        if(a==b){
+            answer = a;
+        }
+        else if(a>b){
+            for(int i=b;i<=a;i++){
+                answer += i;
+            }
         }
         else{
-            while(n!=1){
-                if(cnt>=500){
-                    cnt = -1;
-                    break;
-                }
-
-                if(n%2==0){
-                    n/=2;
-                    cnt++;
-                }
-                else{
-                    n = (n*3)+1;
-                    cnt++;
-                }
+            for(int i=a;i<=b;i++){
+                answer += i;
             }
-            answer = cnt;
         }
 
         return answer;
