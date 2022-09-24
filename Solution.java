@@ -1,20 +1,13 @@
-import java.util.Arrays;
-
 class Solution {
-    public long solution(long n) {
-        long answer = 0;
+    public String solution(String[] seoul) {
+        String answer = "";
 
-        String num = Long.toString(n);
-        char[] arr = num.toCharArray();
-
-        Arrays.sort(arr);
-
-        num = "";
-        for(int i=arr.length;i>0;i--){
-            num+=arr[i-1];
+        for(int i=0;i<seoul.length;i++){
+            if(seoul[i].equals("Kim")){
+                answer = "김서방은 "+Integer.toString(i)+"에 있다";
+                break;
+            }
         }
-
-        answer = Long.parseLong(num);
 
         return answer;
     }
