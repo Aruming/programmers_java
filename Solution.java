@@ -1,11 +1,13 @@
 class Solution {
-    public String solution(String[] seoul) {
+    public String solution(String phone_number) {
         String answer = "";
 
-        for(int i=0;i<seoul.length;i++){
-            if(seoul[i].equals("Kim")){
-                answer = "김서방은 "+Integer.toString(i)+"에 있다";
-                break;
+        for(int i=0;i<phone_number.length();i++){
+            if(i<phone_number.length()-4){
+                answer += "*";
+            }
+            else{
+                answer +=phone_number.charAt(i);
             }
         }
 
