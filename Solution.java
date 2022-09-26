@@ -1,28 +1,28 @@
-import java.util.Arrays;
 class Solution {
-    public int[] solution(int[] arr, int divisor) {
+    public int[] solution(int[] arr) {
         int[] answer = {};
+        int num = arr[0];
         int cnt = 0;
 
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]%divisor == 0)
-                cnt++;
-        }
+        if (arr.length > 1) {
+            answer = new int[arr.length - 1];
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] < num) {
+                    num = arr[i];
+                }
+            }
 
-        if(cnt==0){
-            answer = new int[1];
-            answer[0] = -1;
-        }
-        else{
-            answer = new int[cnt];
-            cnt = 0;
-            for(int i=0;i<arr.length;i++){
-                if(arr[i]%divisor == 0){
-                    answer[cnt]=arr[i];
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] == num)
+                    continue;
+                else {
+                    answer[cnt] = arr[i];
                     cnt++;
                 }
             }
-            Arrays.sort(answer);
+        } else {
+            answer = new int[1];
+            answer[0] = -1;
         }
 
         return answer;
