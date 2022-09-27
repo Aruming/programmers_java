@@ -1,16 +1,15 @@
 class Solution {
-    public int solution(int[] absolutes, boolean[] signs) {
-        int answer = 0;
+    public String solution(int n) {
+        String answer = "";
 
-        for(int i=0;i<absolutes.length;i++){
-            if(signs[i]==true){
-                answer += absolutes[i];
+        for(int i=1;i<=n;i++){
+            if(i%2==1){
+                answer += "수";
             }
             else{
-                answer -= absolutes[i];
+                answer += "박";
             }
         }
-
         return answer;
     }
 }
