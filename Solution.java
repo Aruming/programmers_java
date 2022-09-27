@@ -1,15 +1,15 @@
 class Solution {
-    public String solution(int n) {
+    public String solution(String s) {
         String answer = "";
 
-        for(int i=1;i<=n;i++){
-            if(i%2==1){
-                answer += "수";
-            }
-            else{
-                answer += "박";
-            }
+        if(s.length() % 2 == 0){
+            answer += s.charAt(s.length()/2-1);
+            answer += s.charAt(s.length()/2);
         }
+        else{
+            answer += s.charAt(s.length()/2);
+        }
+
         return answer;
     }
 }
