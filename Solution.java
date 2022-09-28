@@ -1,13 +1,9 @@
 class Solution {
-    public String solution(String s) {
-        String answer = "";
+    public int solution(int[] numbers) {
+        int answer = 45;
 
-        if(s.length() % 2 == 0){
-            answer += s.charAt(s.length()/2-1);
-            answer += s.charAt(s.length()/2);
-        }
-        else{
-            answer += s.charAt(s.length()/2);
+        for(int i=0;i<numbers.length;i++){
+            answer -= numbers[i];
         }
 
         return answer;
