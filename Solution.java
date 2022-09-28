@@ -1,9 +1,17 @@
+import java.util.Arrays;
 class Solution {
-    public int solution(int[] a, int[] b) {
-        int answer = 0;
+    public String solution(String s) {
+        String answer = "";
+        int[] str = new int[s.length()];
 
-        for(int i=0;i<a.length;i++){
-            answer += a[i]*b[i];
+        for(int i=0;i<s.length();i++){
+            str[i] = s.charAt(i);
+        }
+
+        Arrays.sort(str);
+
+        for(int i=str.length-1;i>=0;i--){
+            answer += (char)str[i];
         }
 
         return answer;
