@@ -1,17 +1,14 @@
-import java.util.Arrays;
 class Solution {
-    public String solution(String s) {
-        String answer = "";
-        int[] str = new int[s.length()];
+    public boolean solution(String s) {
+        boolean answer = true;
 
-        for(int i=0;i<s.length();i++){
-            str[i] = s.charAt(i);
-        }
-
-        Arrays.sort(str);
-
-        for(int i=str.length-1;i>=0;i--){
-            answer += (char)str[i];
+        if(s.length()==4 || s.length()==6){
+            for(int i=0;i<s.length();i++){
+                if(s.charAt(i)<'0' || s.charAt(i)>'9')
+                    answer = false;
+            }
+        }else{
+            answer = false;
         }
 
         return answer;
