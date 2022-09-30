@@ -1,12 +1,19 @@
 class Solution {
-    public int[][] solution(int[][] arr1, int[][] arr2) {
-        int[][] answer = new int[arr1.length][arr1[0].length];
+    public long solution(int price, int money, int count) {
+        long answer = -1;
+        long pay = 0;
 
-        for(int i=0;i<arr1.length;i++){
-            for(int j=0;j<arr1[0].length;j++){
-                answer[i][j] = arr1[i][j]+arr2[i][j];
-            }
+        for(int i=1;i<=count;i++){
+            pay += i*price;
         }
+
+        if(money<pay){
+            answer = (long)pay-money;
+        }
+        else{
+            answer = 0;
+        }
+
 
         return answer;
     }
