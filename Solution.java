@@ -1,20 +1,16 @@
+import java.util.Scanner;
+
 class Solution {
-    public long solution(int price, int money, int count) {
-        long answer = -1;
-        long pay = 0;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
 
-        for(int i=1;i<=count;i++){
-            pay += i*price;
+        for(int i=0;i<b;i++){
+            for(int j=0;j<a;j++){
+                System.out.print("*");
+            }
+            System.out.println("");
         }
-
-        if(money<pay){
-            answer = (long)pay-money;
-        }
-        else{
-            answer = 0;
-        }
-
-
-        return answer;
     }
 }
