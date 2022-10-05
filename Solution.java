@@ -1,26 +1,31 @@
-class Solution {
-    public int[] solution(int n, int m) {
-        int[] answer = {1, 1};
+import java.util.*;
 
-        int num = n>m?n:m;
-        int i=2;
+public class Solution {
+    public int[] solution(int []arr) {
+        int[] answer = {};
 
-        while(i<num){
-            if(n%i==0 && m%i==0){
-                answer[0] *= i;
-                answer[1] *= i;
+        int capacity = 1;
 
-                n /= i;
-                m /= i;
-
-                i = 2;
-            }
-            else{
-                i++;
-            }
+        for(int i=0;i<arr.length-1;i++){
+            if(arr[i]==arr[i+1])
+                continue;
+            else
+                capacity++;
         }
 
-        answer[1] *= n*m;
+        answer = new int[capacity];
+        answer[0] = arr[0];
+        capacity = 0;
+
+        for(int i=0;i<arr.length-1;i++){
+            if(arr[i]!=arr[i+1]){
+                capacity++;
+                answer[capacity] = arr[i+1];
+            }
+            else{
+                continue;
+            }
+        }
 
         return answer;
     }
