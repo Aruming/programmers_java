@@ -1,32 +1,30 @@
 class Solution {
-    public int solution(int n) {
-        int answer = 0;
-        int size = 0;
-        int tmp = n;
+    public String solution(String s, int n) {
+        String answer = "";
+        int num = 0;
 
-        while(tmp>0){
-            tmp /= 3;
-            size++;
-        }
+        for(int i=0;i<s.length();i++){
 
-        int[] ternary = new int[size];
-        for(int i=0;i<size;i++){
-            if(n==1){
-                ternary[i] = 1;
+            if(s.charAt(i) == ' '){
+                answer += " ";
             }
             else{
-                ternary[i] = n%3;
-                n /= 3;
+                num = s.charAt(i);
+                if(num>64 && num<91){
+                    num = num+n;
+                    while(num>90){
+                        num-=26;
+                    }
+                }
+                else if(num>96 && num<123){
+                    num = num+n;
+                    while(num>122){
+                        num-=26;
+                    }
+                }
+                answer += (char)num;
             }
-            System.out.println(ternary[i]);
         }
-
-        int pow = 0;
-        for(int i=size-1;i>=0;i--){
-            answer += Math.pow(3, pow)*ternary[i];
-            pow++;
-        }
-
         return answer;
     }
 }
