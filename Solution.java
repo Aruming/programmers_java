@@ -1,30 +1,22 @@
+import java.util.Arrays;
 class Solution {
-    public String solution(String s, int n) {
-        String answer = "";
-        int num = 0;
+    public int solution(int[] d, int budget) {
+        int answer = 0;
+        int sum = 0;
+        Arrays.sort(d);
 
-        for(int i=0;i<s.length();i++){
-
-            if(s.charAt(i) == ' '){
-                answer += " ";
-            }
-            else{
-                num = s.charAt(i);
-                if(num>64 && num<91){
-                    num = num+n;
-                    while(num>90){
-                        num-=26;
-                    }
-                }
-                else if(num>96 && num<123){
-                    num = num+n;
-                    while(num>122){
-                        num-=26;
-                    }
-                }
-                answer += (char)num;
+        for(int i=0;i<d.length;i++){
+            sum += d[i];
+            if(sum>budget){
+                answer = i;
+                break;
             }
         }
+
+        if(sum <= budget){
+            answer = d.length;
+        }
+
         return answer;
     }
 }
