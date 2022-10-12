@@ -1,28 +1,21 @@
+import java.util.Arrays;
 class Solution {
-    public int solution(int[][] sizes) {
-        int answer = 0;
-        int tmp = 0;
+    public String[] solution(String[] strings, int n) {
+        String[] answer = new String[strings.length];
+        String[] sort = new String[strings.length];
 
-        for(int i=0;i<sizes.length;i++){
-            if(sizes[i][0]>sizes[i][1]){
-                tmp = sizes[i][0];
-                sizes[i][0] = sizes[i][1];
-                sizes[i][1] = tmp;
-            }
+        Arrays.sort(strings);
+
+        for(int i=0;i<sort.length;i++){
+            sort[i] = strings[i].substring(n, n+1);
+            sort[i] += strings[i];
         }
 
-        int width = sizes[0][0];
-        int height = sizes[0][1];
-        for(int i=0;i<sizes.length;i++){
-            for(int j=0;j<sizes[0].length;j++){
-                if(sizes[i][0]>width)
-                    width = sizes[i][0];
-                if(sizes[i][1]>height)
-                    height = sizes[i][1];
-            }
-        }
+        Arrays.sort(sort);
 
-        answer = width*height;
+        for(int i=0;i<answer.length;i++){
+            answer[i] = sort[i].substring(1, sort[i].length());
+        }
 
         return answer;
     }
