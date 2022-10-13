@@ -1,20 +1,25 @@
-import java.util.Arrays;
 class Solution {
-    public String[] solution(String[] strings, int n) {
-        String[] answer = new String[strings.length];
-        String[] sort = new String[strings.length];
+    public int solution(int left, int right) {
+        int answer = 0;
 
-        Arrays.sort(strings);
+        int cnt = 0;
+        for(int i=left;i<=right;i++){
+            for(int j=1;j*j<=i;j++){
+                if(j*j == i){
+                    cnt++;
+                }
+                else if(i%j == 0){
+                    cnt+=2;
+                }
+            }
 
-        for(int i=0;i<sort.length;i++){
-            sort[i] = strings[i].substring(n, n+1);
-            sort[i] += strings[i];
-        }
-
-        Arrays.sort(sort);
-
-        for(int i=0;i<answer.length;i++){
-            answer[i] = sort[i].substring(1, sort[i].length());
+            if(cnt%2==0){
+                answer += i;
+            }
+            else{
+                answer -= i;
+            }
+            cnt=0;
         }
 
         return answer;
