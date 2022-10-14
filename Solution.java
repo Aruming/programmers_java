@@ -1,25 +1,28 @@
+import java.util.Arrays;
 class Solution {
-    public int solution(int left, int right) {
-        int answer = 0;
+    public int[] solution(int[] array, int[][] commands) {
+        int[] answer = new int[commands.length];
 
-        int cnt = 0;
-        for(int i=left;i<=right;i++){
-            for(int j=1;j*j<=i;j++){
-                if(j*j == i){
-                    cnt++;
-                }
-                else if(i%j == 0){
-                    cnt+=2;
-                }
-            }
-
-            if(cnt%2==0){
-                answer += i;
+        int[] sort = {};
+        int length = 0;
+        int index = 0;
+        for(int i=0;i<commands.length;i++){
+            if(commands[i][1] == commands[i][0]){
+                answer[i] = array[commands[i][0]-1];
             }
             else{
-                answer -= i;
+                length = commands[i][1] - commands[i][0] + 1;
+                sort = new int[length];
+
+                for(int j= commands[i][0]-1; j<commands[i][1]; j++){
+                    sort[index] = array[j];
+                    index++;
+                }
+                Arrays.sort(sort);
+                index = 0;
+
+                answer[i] = sort[commands[i][2]-1];
             }
-            cnt=0;
         }
 
         return answer;
