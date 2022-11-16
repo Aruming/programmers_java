@@ -1,16 +1,15 @@
 class Solution {
-    public int solution(int n) {
-        int answer = n-1;
+    public int solution(int[] number) {
+        int answer = 0;
 
-        for(int i=2;i<=n;i++){
-            for(int j=2;j*j<=i;j++){
-                if(i%j==0){
-                    answer--;
-                    break;
+        for(int i=0;i<number.length;i++){
+            for(int j=i+1;j<number.length;j++){
+                for(int k=j+1;k<number.length;k++){
+                    if(number[i]+number[j]+number[k]==0)
+                        answer++;
                 }
             }
         }
-
         return answer;
     }
 }
