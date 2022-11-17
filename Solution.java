@@ -1,15 +1,24 @@
+import java.util.HashMap;
 class Solution {
-    public int solution(int[] number) {
-        int answer = 0;
+    public int solution(int[] nums) {
+        int answer = 1;
+        HashMap<Integer, Integer> type = new HashMap<>();
 
-        for(int i=0;i<number.length;i++){
-            for(int j=i+1;j<number.length;j++){
-                for(int k=j+1;k<number.length;k++){
-                    if(number[i]+number[j]+number[k]==0)
-                        answer++;
-                }
+        for(int i=0;i<nums.length;i++){
+            if(type.containsKey(nums[i])){
+                type.put(nums[i], type.get(nums[i])+1);
+            }
+            else{
+                type.put(nums[i], 1);
             }
         }
+
+        if((nums.length / 2) >= type.size()){
+            answer = type.size();
+        }else{
+            answer = nums.length / 2;
+        }
+
         return answer;
     }
 }
