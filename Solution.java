@@ -1,24 +1,28 @@
-import java.util.HashMap;
 class Solution {
     public int solution(int[] nums) {
-        int answer = 1;
-        HashMap<Integer, Integer> type = new HashMap<>();
+        int answer = 0;
+        int sum = 0;
 
         for(int i=0;i<nums.length;i++){
-            if(type.containsKey(nums[i])){
-                type.put(nums[i], type.get(nums[i])+1);
+            for(int j=i+1;j<nums.length;j++){
+                for(int k=j+1;k<nums.length;k++){
+                    sum = nums[i]+nums[j]+nums[k];
+                    if(isPrime(sum)){
+                        answer+=1;
+                    }
+                }
             }
-            else{
-                type.put(nums[i], 1);
-            }
-        }
-
-        if((nums.length / 2) >= type.size()){
-            answer = type.size();
-        }else{
-            answer = nums.length / 2;
         }
 
         return answer;
+    }
+
+    public static boolean isPrime(int num){
+        for(int i=2;i*i<=num;i++){
+            if(num%i == 0){
+                return false;
+            }
+        }
+        return true;
     }
 }
