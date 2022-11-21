@@ -1,28 +1,19 @@
+import java.util.Arrays;
 class Solution {
-    public int solution(int[] nums) {
-        int answer = 0;
-        int sum = 0;
+    public String solution(String s) {
+        String answer = "";
 
-        for(int i=0;i<nums.length;i++){
-            for(int j=i+1;j<nums.length;j++){
-                for(int k=j+1;k<nums.length;k++){
-                    sum = nums[i]+nums[j]+nums[k];
-                    if(isPrime(sum)){
-                        answer+=1;
-                    }
-                }
-            }
+        String[] nums = s.split(" ");
+        int[] nums_ = new int[nums.length];
+
+        for (int i=0;i<nums.length;i++){
+            nums_[i] = Integer.parseInt(nums[i]);
         }
+
+        Arrays.sort(nums_);
+
+        answer += nums_[0] + " " + nums_[nums_.length-1];
 
         return answer;
-    }
-
-    public static boolean isPrime(int num){
-        for(int i=2;i*i<=num;i++){
-            if(num%i == 0){
-                return false;
-            }
-        }
-        return true;
     }
 }
