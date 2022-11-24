@@ -1,20 +1,17 @@
-class Solution {
-    public String solution(String s) {
-        String answer = "";
-        String[] words = s.split("");
+import java.util.Arrays;
+class Solution
+{
+    public int solution(int []A, int []B)
+    {
+        int answer = 0;
 
-        for(int i=0;i< words.length;i++){
-            words[0] = words[0].toUpperCase();
+        Arrays.sort(A);
+        Arrays.sort(B);
 
-            if(i>0){
-                if(words[i-1].equals(" ")){
-                    words[i] = words[i].toUpperCase();
-                }else{
-                    words[i] = words[i].toLowerCase();
-                }
-            }
-            answer += words[i];
+        for(int i=0;i<A.length;i++){
+            answer += A[i] * B[B.length-i-1];
         }
+
         return answer;
     }
 }
