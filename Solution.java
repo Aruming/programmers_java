@@ -1,15 +1,13 @@
-import java.util.Arrays;
-class Solution
-{
-    public int solution(int []A, int []B)
-    {
-        int answer = 0;
+class Solution {
+    public int[] solution(String s) {
+        int[] answer = {0, 0};
 
-        Arrays.sort(A);
-        Arrays.sort(B);
-
-        for(int i=0;i<A.length;i++){
-            answer += A[i] * B[B.length-i-1];
+        while (!s.equals("1")){
+            answer[0]++;
+            answer[1] += s.length();
+            s = s.replaceAll("0", "");
+            answer[1] -= s.length();
+            s = Integer.toBinaryString(s.length());
         }
 
         return answer;
