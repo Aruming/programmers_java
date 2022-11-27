@@ -1,13 +1,20 @@
 class Solution {
-    public int[] solution(String s) {
-        int[] answer = {0, 0};
+    public int solution(int n) {
+        int answer = 0;
+        int sum;
 
-        while (!s.equals("1")){
-            answer[0]++;
-            answer[1] += s.length();
-            s = s.replaceAll("0", "");
-            answer[1] -= s.length();
-            s = Integer.toBinaryString(s.length());
+        for(int i=1;i<=n;i++){
+            sum = 0;
+            for(int j=i;j<=n;j++){
+                sum += j;
+
+                if(sum == n){
+                    answer++;
+                    break;
+                }else if(sum > n){
+                    break;
+                }
+            }
         }
 
         return answer;
