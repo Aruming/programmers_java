@@ -1,22 +1,24 @@
+import java.util.Stack;
 class Solution {
-    public int solution(int n) {
-        int answer = 0;
-        int sum;
+    boolean solution(String s) {
+        boolean answer = false;
 
-        for(int i=1;i<=n;i++){
-            sum = 0;
-            for(int j=i;j<=n;j++){
-                sum += j;
+        Stack<Character> stack = new Stack<>();
 
-                if(sum == n){
-                    answer++;
-                    break;
-                }else if(sum > n){
-                    break;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='('){
+                stack.push(s.charAt(i));
+            }else{
+                if(stack.isEmpty()){
+                    return false;
                 }
+                stack.pop();
             }
         }
 
+        if(stack.isEmpty()){
+            answer = true;
+        }
         return answer;
     }
 }
