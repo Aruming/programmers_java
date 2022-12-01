@@ -1,24 +1,17 @@
 class Solution {
-    boolean solution(String s) {
-        boolean answer = false;
+    public int solution(int n) {
+        int answer = 0;
 
-        int cnt = 0;
+        int n0 = 0;
+        int n1 = 1;
 
-        for(int i=0;i<s.length();i++){
-            if(s.charAt(i)=='('){
-                cnt++;
-            }else{
-                if(cnt==0){
-                    return false;
-                }
-                cnt--;
-            }
+        for(int i=2;i<=n;i++){
+            answer = (n0 + n1) %1234567;
+
+            n0 = n1;
+            n1 = answer;
         }
 
-        if(cnt==0){
-            answer = true;
-        }
-
-        return answer;
+        return answer%1234567;
     }
 }
