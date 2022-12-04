@@ -2,16 +2,19 @@ class Solution {
     public int solution(int n) {
         int answer = 0;
 
-        int n0 = 0;
-        int n1 = 1;
+        int n_cnt = Integer.bitCount(n);
+        int cnt = 0;
 
-        for(int i=2;i<=n;i++){
-            answer = (n0 + n1) %1234567;
+        while (true){
+            n++;
+            cnt = Integer.bitCount(n);
 
-            n0 = n1;
-            n1 = answer;
+            if(cnt == n_cnt){
+                answer = n;
+                break;
+            }
         }
 
-        return answer%1234567;
+        return answer;
     }
 }
