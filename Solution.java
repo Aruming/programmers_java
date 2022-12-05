@@ -1,18 +1,23 @@
 class Solution {
-    public int solution(int n) {
-        int answer = 0;
+    public int[] solution(int brown, int yellow) {
+        int[] answer = new int[2];
 
-        int n_cnt = Integer.bitCount(n);
-        int cnt = 0;
+        int carpetSize = brown + yellow;
 
-        while (true){
-            n++;
-            cnt = Integer.bitCount(n);
-
-            if(cnt == n_cnt){
-                answer = n;
-                break;
+        for(int i=1; i<=carpetSize; i++){
+            int row = i;
+            int col = 0;
+            if(carpetSize%row == 0){
+                col = carpetSize/row;
             }
+
+            if(row>col) continue;
+
+            if((row-2)*(col-2) == yellow){
+                answer[0] = col;
+                answer[1] = row;
+            }
+
         }
 
         return answer;
