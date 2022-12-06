@@ -1,23 +1,45 @@
+import java.util.ArrayList;
+import java.util.List;
 class Solution {
-    public int[] solution(int brown, int yellow) {
-        int[] answer = new int[2];
+    public int[] solution(int n, String[] words) {
+        int[] answer = {0,0};
+        int p = 1;
+        int turn = 1;
+        String startWord = words[0];
+        List<String> wordList = new ArrayList<>();
 
-        int carpetSize = brown + yellow;
-
-        for(int i=1; i<=carpetSize; i++){
-            int row = i;
-            int col = 0;
-            if(carpetSize%row == 0){
-                col = carpetSize/row;
+        for(int i=1;i<words.length;i++){
+            p++;
+            if(p == n+1){
+                p=1;
+                turn++;
             }
 
-            if(row>col) continue;
-
-            if((row-2)*(col-2) == yellow){
-                answer[0] = col;
-                answer[1] = row;
+            if(words[i].length() <= 1){
+                answer[0] = p;
+                answer[1] = turn;
+                break;
             }
 
+            if(words[i].equals(startWord)){
+                answer[0] = p;
+                answer[1] = turn;
+                break;
+            }
+
+            if(wordList.contains(words[i])){
+                answer[0] = p;
+                answer[1] = turn;
+                break;
+            }
+
+            wordList.add(words[i]);
+
+            if(words[i-1].charAt(words[i-1].length()-1) != words[i].charAt(0)){
+                answer[0] = p;
+                answer[1] = turn;
+                break;
+            }
         }
 
         return answer;
