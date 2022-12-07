@@ -1,45 +1,26 @@
-import java.util.ArrayList;
-import java.util.List;
-class Solution {
-    public int[] solution(int n, String[] words) {
-        int[] answer = {0,0};
-        int p = 1;
-        int turn = 1;
-        String startWord = words[0];
-        List<String> wordList = new ArrayList<>();
+import java.util.Stack;
+class Solution
+{
+    public int solution(String s)
+    {
+        int answer = -1;
 
-        for(int i=1;i<words.length;i++){
-            p++;
-            if(p == n+1){
-                p=1;
-                turn++;
+        Stack<Character> stack = new Stack<>();
+
+        for(int i=0;i<s.length();i++){
+            char ch = s.charAt(i);
+
+            if(!stack.isEmpty() && stack.peek() == ch){
+                stack.pop();
+            }else{
+                stack.push(ch);
             }
+        }
 
-            if(words[i].length() <= 1){
-                answer[0] = p;
-                answer[1] = turn;
-                break;
-            }
-
-            if(words[i].equals(startWord)){
-                answer[0] = p;
-                answer[1] = turn;
-                break;
-            }
-
-            if(wordList.contains(words[i])){
-                answer[0] = p;
-                answer[1] = turn;
-                break;
-            }
-
-            wordList.add(words[i]);
-
-            if(words[i-1].charAt(words[i-1].length()-1) != words[i].charAt(0)){
-                answer[0] = p;
-                answer[1] = turn;
-                break;
-            }
+        if(stack.isEmpty()){
+            answer = 1;
+        }else{
+            answer = 0;
         }
 
         return answer;
